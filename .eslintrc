@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "react/jsx-filename-extension": "off",
+        "import/order": "off",
+        "no-unused-vars": "warn",
+        "arrow-parens": "off",
+        "react/jsx-wrap-multilines": "off",
+        "object-curly-newline": "off"
+      }
+    }
+  ]
+}
