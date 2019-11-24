@@ -1,34 +1,52 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useContext } from 'react';
 import { StatusBar } from 'react-native';
+import { Text, Input, Button } from 'react-native-elements';
 import styled from 'styled-components/native';
+import { AuthContext } from '../contexts/AuthContext';
 
-const StyledText = styled.Text`
-  font-size: 24px;
-  color: white;
-`;
-
-const StyledContainer = styled.View`
-  margin: 0;
-  padding: 0;
-`;
-
-const TopView = styled.View`
-  height: 40%;
-  background: #eb4459;
-  margin-top: 0;
-`;
-
-const BottomView = styled.View`
+const Container = styled.View`
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  background: #f6f7fe;
+  width: 80%;
+  margin: 0 auto;
 `;
 
-export default function LoginPage() {
+export default function LoginPage({ navigation }) {
+  const { setValues } = useContext(AuthContext);
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
+
+  function handleSubmit() {
+    setValues(user, pass);
+    // do stuff for navigating to home page for module n3
+  }
+
   return (
-    <StyledContainer>
-      <StatusBar backgroundColor="#EB4459" barStyle="dark-content" />
-      <TopView />
-      <BottomView />
-    </StyledContainer>
+    <Container>
+      <StatusBar barStyle="dark-content" />
+      <Text h1>Login</Text>
+      <Input
+        placeholder="Nombre de Usuario"
+        value={user}
+        onChangeText={text => setUser(text)}
+      />
+      <Input
+        placeholder="Contraseña"
+        value={pass}
+        onChangeText={text => setPass(text)}
+      />
+      <Button
+        title="Ingresar"
+        buttonStyle={{ width: '100%', marginTop: 16, marginBottom: 16 }}
+        onPress={handleSubmit}
+      />
+      <Button
+        title="Registrarse"
+        type="clear"
+        onPress={() => navigation.push('Register')}
+      />
+    </Container>
   );
 }
