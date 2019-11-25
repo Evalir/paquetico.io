@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StatusBar, AsyncStorage } from 'react-native';
 import { Text, Input, Button } from 'react-native-elements';
 import styled from 'styled-components/native';
@@ -39,7 +39,7 @@ export default function LoginPage({ navigation }) {
         navigation.goBack();
       }
     } catch (error) {
-      console.log('error guardando');
+      console.log(error);
     }
   };
 
