@@ -4,6 +4,7 @@ import { StatusBar } from 'react-native';
 import { Text, Input, Button } from 'react-native-elements';
 import styled from 'styled-components/native';
 import { AuthContext } from '../contexts/AuthContext';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 const Container = styled.View`
   align-items: center;
@@ -20,7 +21,7 @@ export default function LoginPage({ navigation }) {
 
   function handleSubmit() {
     setValues(user, pass);
-    // do stuff for navigating to home page for module n3
+    navigation.push('Drawer');
   }
 
   return (
